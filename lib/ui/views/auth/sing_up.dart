@@ -17,6 +17,7 @@ class Singup extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.only(left: 30.w, right: 30.w, top: 80.h),
           child: SingleChildScrollView(
+            // for screen overflow
             scrollDirection: Axis.vertical,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -48,7 +49,7 @@ class Singup extends StatelessWidget {
                   decoration: AppStyle().textfielddecoration("Enter-Password"),
                 ),
                 SizedBox(height: 20.h),
-                VialetButton("Create Account"),
+                VialetButton("Create Account", () => Get.toNamed(userForm)),
                 SizedBox(height: 20.h),
                 Align(
                   alignment: Alignment.center,

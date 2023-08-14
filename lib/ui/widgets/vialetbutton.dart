@@ -8,8 +8,9 @@ class VialetButton extends StatelessWidget {
   RxBool _value = false.obs;
 
   //! Constructor এর মাধ্যমে VialetButton এর property কে call করা হয়েছে
+  final onAction;
   String title;
-  VialetButton(this.title);
+  VialetButton(this.title, this.onAction);
   //
   @override
   Widget build(BuildContext context) {
@@ -19,6 +20,7 @@ class VialetButton extends StatelessWidget {
       () => InkWell(
         onTap: () {
           _value.value = true;
+          onAction();
         },
         child: Container(
           height: 48.h,

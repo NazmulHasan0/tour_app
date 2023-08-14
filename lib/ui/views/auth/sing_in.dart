@@ -41,7 +41,7 @@ class Singin extends StatelessWidget {
                   decoration: AppStyle().textfielddecoration("Enter-Password"),
                 ),
                 SizedBox(height: 20.h),
-                VialetButton("Login"),
+                VialetButton("Login", () {}),
                 SizedBox(height: 20.h),
                 Align(
                   alignment: Alignment.center,
