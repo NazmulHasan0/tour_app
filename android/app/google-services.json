@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "943100119661",
+    "project_id": "mytourapp-9a034",
+    "storage_bucket": "mytourapp-9a034.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:943100119661:android:e5da56470cb8e217d8cd64",
+        "android_client_info": {
+          "package_name": "com.example.tourapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "943100119661-nmbs56ra2s54n9aunvvbpg27meggbta0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tourapp",
+            "certificate_hash": "07f89701794a31c89914ed6a9d39889c7a5a480a"
+          }
+        },
+        {
+          "client_id": "943100119661-ubiea6sc0njpvcepkpu5fica65o9tjaj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKVMDKyUaaxeCfZy0grOQTB1OgPP9lljc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "943100119661-ubiea6sc0njpvcepkpu5fica65o9tjaj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

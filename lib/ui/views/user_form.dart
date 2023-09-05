@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:toggle_switch/toggle_switch.dart';
+import 'package:tourapp/business_logics/userinfo.dart';
 import 'package:tourapp/const/app_color.dart';
-import 'package:tourapp/ui/route/route.dart';
 import 'package:tourapp/ui/styles/style.dart';
-
 import '../widgets/vialetbutton.dart';
 
 class UserForm extends StatelessWidget {
@@ -13,10 +12,11 @@ class UserForm extends StatelessWidget {
   TextEditingController _namecontroller = TextEditingController();
   TextEditingController _phonecontroller = TextEditingController();
   TextEditingController _addresscontroller = TextEditingController();
-
   //! যেহেতু stateless use করছি, তাই state change করার জন্য Rx<> .obs use করা হয়েছে
   Rx<TextEditingController> _dobcontroller = TextEditingController().obs;
   Rx<DateTime> selectedDate = DateTime.now().obs; //! initial date পাবার জন্য
+  String? dob;
+  String gender = "Male"; // for toggle button
 
   _selectDate(BuildContext context) async {
     //! parameter হিসাবে context পাঠানো হচ্ছে
@@ -27,8 +27,8 @@ class UserForm extends StatelessWidget {
       lastDate: DateTime(2024), //Cannot be 2023
     );
     if (selected != null && selected != selectedDate) {
-      _dobcontroller.value.text =
-          "${selected.day}-${selected.month}-${selected.year}";
+      dob = "${selected.day} - ${selected.month} - ${selected.year}";
+      _dobcontroller.value.text = dob!;
     }
   }
 
@@ -85,11 +85,25 @@ class UserForm extends StatelessWidget {
                   totalSwitches: 2,
                   labels: ['Male', 'Female'],
                   onToggle: (index) {
+                    if (index == 0) {
+                      gender = "Male";
+                    } else {
+                      gender = "Female";
+                    }
                     print('switched to: $index');
                   },
                 ),
                 SizedBox(height: 30.h),
-                VialetButton("Submit", () => Get.toNamed(privacyPolicy)),
+                VialetButton(
+                  "Submit",
+                  () => UserInfo().sendFormDataToDB(
+                    _namecontroller.text,
+                    int.parse(_phonecontroller.text),
+                    _addresscontroller.text,
+                    dob!,
+                    gender,
+                  ),
+                ),
               ],
             ),
           ),

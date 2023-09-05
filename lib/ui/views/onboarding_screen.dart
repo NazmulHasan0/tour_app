@@ -89,6 +89,7 @@ class OnboardingScreen extends StatelessWidget {
                           InkWell(
                             onTap: () {
                               if (_currentIndex == _titles.length - 1) {
+                                // _titles.length বলতে animation & description এর length
                                 Get.toNamed(singUp);
                                 // print("finished");
                               } else {

@@ -7,6 +7,8 @@ import 'package:tourapp/ui/route/route.dart';
 import 'package:tourapp/ui/styles/style.dart';
 import 'package:tourapp/ui/widgets/vialetbutton.dart';
 
+import '../../../business_logics/auth.dart';
+
 class Singup extends StatelessWidget {
   TextEditingController _emailcontroller = TextEditingController();
   TextEditingController _passcontroller = TextEditingController();
@@ -49,7 +51,14 @@ class Singup extends StatelessWidget {
                   decoration: AppStyle().textfielddecoration("Enter-Password"),
                 ),
                 SizedBox(height: 20.h),
-                VialetButton("Create Account", () => Get.toNamed(userForm)),
+                VialetButton(
+                  "Create Account",
+                  () => Auth().registration(
+                    _emailcontroller.text,
+                    _passcontroller.text,
+                    context,
+                  ),
+                ),
                 SizedBox(height: 20.h),
                 Align(
                   alignment: Alignment.center,
@@ -74,24 +83,27 @@ class Singup extends StatelessWidget {
                 ),
                 RichText(
                   text: TextSpan(
-                      text: 'Alraedy an User?',
-                      style: TextStyle(
-                        fontSize: 18.sp,
-                        fontWeight: FontWeight.w500,
-                        color: Colors.black,
-                      ),
-                      children: [
-                        TextSpan(
-                          text: ' Sign up',
-                          style: TextStyle(
-                            fontSize: 18.sp,
-                            fontWeight: FontWeight.w600,
-                            color: AppsColor.violetColor,
-                          ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () => Get.toNamed(singIn),
+                    text: 'Alraedy an User?',
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w500,
+                      color: Colors.black,
+                    ),
+                    children: [
+                      TextSpan(
+                        text: ' Sign up',
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.w600,
+                          color: AppsColor.violetColor,
                         ),
-                      ]),
+                        // RichText কে GestureDetector / InkWell দিয়ে wrap করা যায় না
+                        // তাই recognizer use করতে হয়
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () => Get.toNamed(singIn),
+                      ),
+                    ],
+                  ),
                 ),
               ],
             ),
