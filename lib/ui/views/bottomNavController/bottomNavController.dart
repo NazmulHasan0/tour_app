@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:tourapp/const/app_string.dart';
+import 'package:tourapp/ui/views/bottomNavController/pages/nav_add.dart';
+import 'package:tourapp/ui/views/bottomNavController/pages/nav_favorite.dart';
+import 'package:tourapp/ui/views/bottomNavController/pages/nav_home.dart';
 
 class BottomNavController extends StatelessWidget {
   //
@@ -9,9 +12,9 @@ class BottomNavController extends StatelessWidget {
   RxBool _drawer = false.obs;
 
   final _pages = [
-    Container(color: Colors.purple),
-    Container(color: Colors.green),
-    Container(color: Colors.pink),
+    NavHome(),
+    NavAdd(),
+    NavFavorite(),
   ];
 
   //
